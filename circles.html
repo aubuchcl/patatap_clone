@@ -7,22 +7,25 @@
 		<script type="text/javascript" src="paper-full.js">
 		</script>
 		<script type="text/paperscript" canvas="myCanvas">
-		// Create a Paper.js Path to draw a line into it:
-		var path = new Path();
-		// Give the stroke a color
-		path.strokeColor = 'blue';
-		var start = new Point(100, 180);
-		// Move to start and draw a line from there
-		path.moveTo(start);
-		// Note the plus operator on Point objects.
-		// PaperScript does that for us, and much more!
-		path.lineTo(start + [ 100, -50 ]);
+		  var path = new Path.Circle(new Point(20,20), 10);
+		  path.fillColor = "red";
 
-		var myCircle = new Path.Circle(new Point(100,70), 50);
-		myCircle.fillColor = "red";
-		var myCircle2 = new Path.Circle(new Point(200,70), 50);
-		myCircle2.fillColor = "purple";
-	</script>
+		  //Create a symbol from the path
+		  var symbol = new Symbol(path);
+
+		  //place two instances of the symbol
+		  for(var i = 50; i < 2000; i+= 50){
+		  	symbol.place(new Point(i, 50))
+		  	for(var x = 50; x < 2000; x+=50){
+		  		symbol.place(new Point(i, x))
+		  	}
+
+		  }
+
+
+
+
+		</script>
 
 
 
