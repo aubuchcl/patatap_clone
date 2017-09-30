@@ -7,16 +7,25 @@
 		<script type="text/javascript" src="paper-full.js">
 		</script>
 		<script type="text/paperscript" canvas="myCanvas">
-		  var path = new Path.Circle(new Point(20,20), 10);
-		  path.fillColor = "red";
+		  var circlesArray = [];
+		  function onKeyDown(event){
 
-		  //Create a symbol from the path
-		  var symbol = new Symbol(path);
+		  	var maxPoint = new Point(view.size.width, view.size.height);
+		  	var randomPoint = Point.random();
+		  	var point = maxPoint * randomPoint;
 
-		  //place two instances of the symbol
-		  for(var i = 50; i < 2000; i+= 50){
-		  	for(var x = 50; x < 2000; x+=50){
-		  		symbol.place(new Point(i, x))
+		  	var circle = new Path.Circle(point, 200)
+		  	circle.fillColor = "orange"
+		  	circlesArray.push(circle);
+		  }
+
+		  var animatedCircle = new Path.Circle(new Point(300,300), 100)
+		  animatedCircle.fillColor = "red";
+
+		  function onFrame(event){
+		  	for(var i = 0; i < circlesArray.length; i++){
+		  		circlesArray[i].fillColor.hue += 13
+		  		circlesArray[i].scale(.9)
 		  	}
 		  }
 
