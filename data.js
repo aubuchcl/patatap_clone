@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Circles PataTap Clone</title>
-	<script type="text/javascript" src="paper-full.js">
-	</script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.min.js"></script>
-
-	<link rel="stylesheet" href="circles.css">
-	<script type="text/paperscript" canvas="myCanvas">
-
-	var keyData = {
+var data = {
 	q: {
 		sound: new Howl({
   		src: ['sounds/bubbles.mp3']
@@ -167,49 +156,3 @@
 		color: '#2c3e50'
 	}
 }
-
-
-
-	  var circlesArray = [];
-	  function onKeyDown(event){
-	  	if(keyData[event.key]){
-		  	var maxPoint = new Point(view.size.width, view.size.height);
-		  	var randomPoint = Point.random();
-		  	var point = maxPoint * randomPoint;
-
-		  	var circle = new Path.Circle(point, 500)
-		  	circle.fillColor = keyData[event.key].color;
-		  	keyData[event.key].sound.play();
-		  	circlesArray.push(circle);
-	  	}
-	  }
-
-	  function onFrame(event){
-	  	for(var i = 0; i < circlesArray.length; i++){
-	  		circlesArray[i].fillColor.hue += 13
-	  		circlesArray[i].scale(.9)
-	  		if(circlesArray[i].area < 1){
-	  			circlesArray[i].remove();
-	  			circlesArray.splice(i, 1);
-	  			i--;
-	  			console.log(circlesArray);
-	  		}
-	  	}
-
-	  }
-
-
-
-
-	</script>
-
-
-
-</head>
-<body>
-	<canvas id="myCanvas"></canvas>
-
-
-
-</body>
-</html>
