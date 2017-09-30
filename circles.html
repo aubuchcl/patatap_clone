@@ -177,7 +177,7 @@
 		  	var randomPoint = Point.random();
 		  	var point = maxPoint * randomPoint;
 
-		  	var circle = new Path.Circle(point, 500)
+		  	var circle = new Path.Circle(point, 100)
 		  	circle.fillColor = keyData[event.key].color;
 		  	keyData[event.key].sound.play();
 		  	circlesArray.push(circle);
@@ -187,7 +187,7 @@
 	  function onFrame(event){
 	  	for(var i = 0; i < circlesArray.length; i++){
 	  		circlesArray[i].fillColor.hue += 13
-	  		circlesArray[i].scale(.9)
+	  		circlesArray[i].scale(.9765)
 	  		if(circlesArray[i].area < 1){
 	  			circlesArray[i].remove();
 	  			circlesArray.splice(i, 1);
